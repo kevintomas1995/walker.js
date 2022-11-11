@@ -17,7 +17,7 @@ export default function Newsletter() {
           </label>
           <input
            onFocus={(e) => {
-              trackInput(e, "account focus");
+              trackInput(e, "newsleter focus");
             }}
             type="text"
             name="email"

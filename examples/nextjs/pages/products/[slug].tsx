@@ -37,7 +37,7 @@ const Index: NextPage<Props> = (props) => {
 
   return (
     <div className="bg-white" data-elbcontext="test:productDetails_engagement">
-      <div className="pt-6" data-elb="product-details" data-elbaction="load">
+      <div className="pt-6" data-elb="product-details">
         {/* Product info */}
         <div
           data-elbaction="wait(10000):interested"

@@ -1,31 +1,9 @@
 import { AccountSignUp } from '../components/organisms/account';
 import Products from '../components/organisms/products';
-import { useEffect, useState } from 'react';
-import { trackScroll } from '../utils/customEvents';
+import { useSrcollPosition } from '../utils/customEvents';
 
 export default function Home() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [trackedScrollToBottom, setTrackedScrollToBottom] = useState(false);
-
-  if (typeof window !== 'undefined') {
-    useEffect(() => {
-      window.addEventListener('scroll', () => {
-        let scrollTop = window.scrollY;
-        let docHeight = document.body.offsetHeight;
-        let winHeight = window.innerHeight;
-        let scrollPercent = scrollTop / (docHeight - winHeight);
-        let scrollPercentRounded = Math.round(scrollPercent * 100);
-        setScrollPosition(scrollPercentRounded);
-      });
-    }, [window.scrollY, document.body.offsetHeight, window.innerHeight]);
-  }
-
-  useEffect(() => {
-    if (scrollPosition > 96 && !trackedScrollToBottom) {
-      trackScroll('home');
-      setTrackedScrollToBottom(true);
-    }
-  }, [scrollPosition]);
+  useSrcollPosition("home");
 
   return (
     <div
@@ -43,7 +21,7 @@ export default function Home() {
                 <div>
                   <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
                     <span className="md:block">walker.js demo for</span>
-                    <span className="text-elbwalker-400 md:block">next.js</span>
+                    <span className="text-elbwalker-400 md:block"> next.js</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                     Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
