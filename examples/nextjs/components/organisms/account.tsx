@@ -1,6 +1,7 @@
 import { AccountBox } from "../molecules/account";
 import { ButtonPrimary } from "../molecules/buttons";
-import { trackInput } from "../../utils/customEvents";
+import { trackInput, checkPassword } from "../../utils/customEvents";
+import { MouseEvent, useState } from "react";
 
 export function AccountLogIn() {
   return (
@@ -48,6 +49,14 @@ export function AccountLogIn() {
 }
 
 export function AccountSignUp() {
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    if (password.length < 8) {
+      e.preventDefault();
+      checkPassword("account");
+    }
+  }
+
   return (
     <AccountBox entity="account">
       <div className="mt-6">
@@ -93,6 +102,7 @@ export function AccountSignUp() {
               Password
             </label>
             <input
+              onChange={(e) => setPassword(e.target.value)}
               id="password"
               name="password"
               type="password"
@@ -107,6 +117,7 @@ export function AccountSignUp() {
             <ButtonPrimary
               action="signup"
               label="Create your account"
+              onClick={handleSubmit}
             ></ButtonPrimary>
           </div>
           <div className="text-xs leading-5 text-gray-500">

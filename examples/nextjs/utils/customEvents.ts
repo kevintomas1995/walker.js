@@ -43,3 +43,11 @@ export const trackInput = async (
   });
 };
 
+export const checkPassword = async (entity:  string) => {
+  const { elb } = await import("@elbwalker/walker.js");
+  elb(`${entity} shortPassword`, { domain: "localhost" }, "validation", {
+    test: "password validation",
+  });
+};
+
+
