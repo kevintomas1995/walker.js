@@ -15,10 +15,10 @@ export default function Products() {
               className="group"
               target="_blank"
               data-elb="product"
-              data-elbaction="click; hover"
+              data-elbaction="click"
               data-elb-product={`id: ${product.id}`}
             >
-              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+              <div data-elbaction="visible" className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={product.imageSrc}
                   alt={product.imageAlt}
